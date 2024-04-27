@@ -57,11 +57,24 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      'content-docs',
+      {
+        id: 'notes',
+        path: 'notes',
+        routeBasePath: 'notes',
+        sidebarPath: require.resolve('./sidebarsNotes.ts'),
+        showLastUpdateTime: true,
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Ray Hung 學習筆記',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -73,12 +86,14 @@ const config: Config = {
           position: 'left',
           label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
+          // type: 'docSidebar',
+          href: '/notes/intro',
+          sidebarId: 'notesSidebar',
+          position: 'left',
+          label: 'Notes',
         },
+        {to: '/blog', label: 'Blog', position: 'left'},
       ],
     },
     footer: {
@@ -91,27 +106,14 @@ const config: Config = {
               label: 'Tutorial',
               to: '/docs/intro',
             },
+            {
+              label: 'Notes',
+              to: '/notes/intro',
+            },
           ],
         },
         {
           title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
           items: [
             {
               label: 'Blog',
@@ -119,12 +121,16 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/rara7777',
+            },
+            {
+              label: 'Linkedin',
+              href: 'https://www.linkedin.com/in/hungrara',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Ray Hung 學習筆記. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

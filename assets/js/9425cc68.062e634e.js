@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrayhung=self.webpackChunkrayhung||[]).push([[7379],{7758:a=>{a.exports=JSON.parse('{"metadata":{"permalink":"/rara7777.github.io/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

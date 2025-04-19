@@ -3,106 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.6.3">
-<title data-rh="true">AWS Snow Family 的簡介與歷史足跡 | Ray Hung 學習筆記</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://rara7777.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://rara7777.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://rara7777.github.io/notes/AWS Storage/Snow Family"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-notes-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-notes-current"><meta data-rh="true" property="og:title" content="AWS Snow Family 的簡介與歷史足跡 | Ray Hung 學習筆記"><meta data-rh="true" name="description" content="AWS Snow Family 是一組針對大量數據遷移與邊緣計算的解決方案，適用於網絡帶寬有限或需本地化處理的情境"><meta data-rh="true" property="og:description" content="AWS Snow Family 是一組針對大量數據遷移與邊緣計算的解決方案，適用於網絡帶寬有限或需本地化處理的情境"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://rara7777.github.io/notes/AWS Storage/Snow Family"><link data-rh="true" rel="alternate" href="https://rara7777.github.io/notes/AWS Storage/Snow Family" hreflang="en"><link data-rh="true" rel="alternate" href="https://rara7777.github.io/notes/AWS Storage/Snow Family" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Ray Hung 學習筆記 RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Ray Hung 學習筆記 Atom Feed"><link rel="stylesheet" href="/assets/css/styles.0a47614b.css">
-<script src="/assets/js/runtime~main.368dce01.js" defer="defer"></script>
-<script src="/assets/js/main.957567bf.js" defer="defer"></script>
+<title data-rh="true">AWS Snow Family 簡介與歷史演進 | Ray Hung 學習筆記</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://rara7777.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://rara7777.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://rara7777.github.io/notes/AWS Storage/Snow Family"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-notes-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-notes-current"><meta data-rh="true" property="og:title" content="AWS Snow Family 簡介與歷史演進 | Ray Hung 學習筆記"><meta data-rh="true" name="description" content="AWS Snow Family 是一系列針對大量資料遷移與邊緣運算（Edge Computing）需求所設計的裝置與服務，特別適用於以下場景："><meta data-rh="true" property="og:description" content="AWS Snow Family 是一系列針對大量資料遷移與邊緣運算（Edge Computing）需求所設計的裝置與服務，特別適用於以下場景："><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://rara7777.github.io/notes/AWS Storage/Snow Family"><link data-rh="true" rel="alternate" href="https://rara7777.github.io/notes/AWS Storage/Snow Family" hreflang="en"><link data-rh="true" rel="alternate" href="https://rara7777.github.io/notes/AWS Storage/Snow Family" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.1621d3ed.css">
+<script src="/assets/js/runtime~main.7f819f0f.js" defer="defer"></script>
+<script src="/assets/js/main.e2925831.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
-<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Ray Hung 學習筆記</b></a><a class="navbar__item navbar__link" href="/docs/intro">Tutorial</a><a class="navbar__item navbar__link" sidebarid="notesSidebar" href="/notes/intro">Notes</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/notes/intro">Notes Intro</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/notes/AWS Storage/Snow Family">AWS Storage</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/notes/AWS Storage/Snow Family">AWS Snow Family 的簡介與歷史足跡</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">AWS Storage</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">AWS Snow Family 的簡介與歷史足跡</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AWS Snow Family 的簡介與歷史足跡</h1></header>
-<p>AWS Snow Family 是一組針對大量數據遷移與邊緣計算的解決方案，適用於網絡帶寬有限或需本地化處理的情境</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="snowcone-2024-11-12-aws-宣布終止-snowcone-服務">Snowcone (2024-11-12 AWS 宣布終止 Snowcone 服務)<a href="#snowcone-2024-11-12-aws-宣布終止-snowcone-服務" class="hash-link" aria-label="Direct link to Snowcone (2024-11-12 AWS 宣布終止 Snowcone 服務)" title="Direct link to Snowcone (2024-11-12 AWS 宣布終止 Snowcone 服務)">​</a></h2>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Ray Hung 學習筆記</b></a><a class="navbar__item navbar__link" href="/docs/intro">Tutorial</a><a class="navbar__item navbar__link" sidebarid="notesSidebar" href="/notes/intro">Notes</a></div><div class="navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/notes/intro">Notes Intro</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/notes/AWS Storage/S3 Quickstart">AWS Storage</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/notes/AWS Storage/S3 Quickstart">AWS S3 快速入門</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/notes/AWS Storage/Snow Family">AWS Snow Family 簡介與歷史演進</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">AWS Storage</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">AWS Snow Family 簡介與歷史演進</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AWS Snow Family 簡介與歷史演進</h1></header>
+<p>AWS Snow Family 是一系列針對<strong>大量資料遷移</strong>與**邊緣運算（Edge Computing）**需求所設計的裝置與服務，特別適用於以下場景：</p>
 <ul>
-<li>8 TB</li>
-<li>很輕、防摔、防震、防塵、防水、耐高低溫</li>
-<li>可以用於資料 compute, storage, data transfer</li>
-<li>可以將資料傳到 Snowcone 後，用 DataSync 透過網路傳輸至 AWS，也可以寄回 AWS 讓 AWS 幫忙上傳</li>
-<li><strong>在本地電腦安裝 AWS OpsHub 來管理 Snow Family 裝置</strong></li>
-<li>可搭配 DataSync 將資料從 Snowcone 上傳到 S3</li>
-<li>可以分成<!-- -->
+<li>網路頻寬受限的環境</li>
+<li>需要在本地進行資料處理的應用</li>
+<li>大量資料需要快速且安全地遷移至 AWS 的情況</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-snowcone已終止服務">❄️ Snowcone（已終止服務）<a href="#️-snowcone已終止服務" class="hash-link" aria-label="Direct link to ❄️ Snowcone（已終止服務）" title="Direct link to ❄️ Snowcone（已終止服務）">​</a></h2>
+<blockquote>
+<p>📆 終止時間：2024 年 11 月 12 日</p>
+</blockquote>
 <ul>
-<li>Snowball Edge Compute Optimized<!-- -->
+<li>提供 <strong>8 TB</strong> 儲存容量</li>
+<li>小巧輕便，具備防摔、防震、防塵、防水與耐極端溫差的特性</li>
+<li>適用於本地端的<strong>儲存、資料處理與傳輸</strong></li>
+<li>支援兩種資料上傳方式：<!-- -->
 <ul>
-<li>較多 CPU 資源</li>
+<li>使用 <strong>AWS DataSync</strong>，透過網路傳輸資料至 AWS</li>
+<li>將裝置寄回 AWS，由 AWS 協助上傳</li>
 </ul>
 </li>
-<li>Snowball Edge Storage Optimized<!-- -->
+<li>可透過 <strong>AWS OpsHub</strong> 管理與設定 Snow Family 裝置</li>
+<li>影片資源：<!-- -->
 <ul>
-<li>容量較大</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>影片<!-- -->
-<ul>
-<li>介紹<!-- -->
-<ul>
-<li><a href="https://youtu.be/R-yfD-aROKM" target="_blank" rel="noopener noreferrer">https://youtu.be/R-yfD-aROKM</a></li>
-</ul>
-</li>
-<li>案例 - 野外影音轉碼<!-- -->
-<ul>
-<li><a href="https://youtu.be/X_8LM7E_hiE?feature=shared" target="_blank" rel="noopener noreferrer">https://youtu.be/X_8LM7E_hiE?feature=shared</a></li>
+<li><a href="https://youtu.be/R-yfD-aROKM" target="_blank" rel="noopener noreferrer">Snowcone 介紹影片</a></li>
+<li><a href="https://youtu.be/X_8LM7E_hiE?feature=shared" target="_blank" rel="noopener noreferrer">Snowcone 案例 - 野外影音轉碼</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="snowball">Snowball<a href="#snowball" class="hash-link" aria-label="Direct link to Snowball" title="Direct link to Snowball">​</a></h3>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-snowball現為唯一仍提供的-snow-family-成員">📦 Snowball（現為唯一仍提供的 Snow Family 成員）<a href="#-snowball現為唯一仍提供的-snow-family-成員" class="hash-link" aria-label="Direct link to 📦 Snowball（現為唯一仍提供的 Snow Family 成員）" title="Direct link to 📦 Snowball（現為唯一仍提供的 Snow Family 成員）">​</a></h2>
+<p>Snowball 是一種用於<strong>大規模資料遷移與邊緣運算</strong>的裝置，提供兩種型號：</p>
 <ul>
-<li>80 TB (舊版)<!-- -->
+<li><strong>Snowball Edge Storage Optimized</strong>
 <ul>
-<li><a href="https://aws.amazon.com/blogs/aws/new-snowball-edge-storage-optimized-devices-with-more-storage-and-bandwidth/" target="_blank" rel="noopener noreferrer">AWS Snowball Edge Storage Optimized 210TB</a> device with NVMe storage and the ability to transfer up to 1.5 gigabytes of data per second for data migration workloads, and the <a href="https://aws.amazon.com/about-aws/whats-new/2022/10/aws-snowball-edge-compute-optimized-double-compute-capacatiy-ssd-nvme-storage/" target="_blank" rel="noopener noreferrer">Snowball Edge Compute Optimized with 104 vCPUs</a> device with full SSD 28TB NVMe storage for edge compute workloads.</li>
-</ul>
-</li>
-<li>用於資料傳輸，可以是將資料傳進 AWS，也可以是從 AWS 傳出來</li>
-<li>大規模資料案例介紹影片<!-- -->
-<ul>
-<li><a href="https://youtu.be/9uc2DSZ1wL8?feature=shared" target="_blank" rel="noopener noreferrer">https://youtu.be/9uc2DSZ1wL8?feature=shared</a></li>
+<li>高容量儲存，最高達 <strong>210 TB NVMe</strong></li>
+<li>支援每秒高達 <strong>1.5 GB</strong> 的資料傳輸速度</li>
 </ul>
 </li>
-</ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="snowmobile-2024-年-4-月起已停止提供服務">Snowmobile (2024 年 4 月起已停止提供服務)<a href="#snowmobile-2024-年-4-月起已停止提供服務" class="hash-link" aria-label="Direct link to Snowmobile (2024 年 4 月起已停止提供服務)" title="Direct link to Snowmobile (2024 年 4 月起已停止提供服務)">​</a></h3>
+<li><strong>Snowball Edge Compute Optimized</strong>
 <ul>
-<li>容量約 100 PB</li>
-<li>是乘載大量 Snowball 的大型卡車</li>
-<li>有溫控、GPS、24 小時監控攝影、甚至可以請保鑣</li>
-<li>適合 &gt; 10 PB 的案例</li>
-<li>2024 年 4 月 AWS 為了精簡成本，取消了 Snowmobile，原因：<!-- -->
-<ul>
-<li>駕駛、停車問題</li>
-<li>電力、控溫成本問題</li>
-<li>太少使用，大多數企業只用 Snowball 搬移一部分資料，很多企業上雲後不需要再動用 Snowmobile 解決</li>
-</ul>
-</li>
-<li>AWS 展示 Snowmobile 的影片<!-- -->
-<ul>
-<li><a href="https://youtu.be/8vQmTZTq7nw?feature=shared" target="_blank" rel="noopener noreferrer">https://youtu.be/8vQmTZTq7nw?feature=shared</a></li>
+<li>強化運算資源，最多 <strong>104 vCPUs</strong></li>
+<li>配備 <strong>全 SSD，28 TB NVMe 儲存空間</strong>，適合需要在邊緣執行分析或機器學習任務的場景</li>
 </ul>
 </li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="使用原則">使用原則<a href="#使用原則" class="hash-link" aria-label="Direct link to 使用原則" title="Direct link to 使用原則">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="功能特色">功能特色：<a href="#功能特色" class="hash-link" aria-label="Direct link to 功能特色：" title="Direct link to 功能特色：">​</a></h3>
 <ul>
-<li>評估自己的資料量在自己的網速傳入 AWS S3 的所需時間<!-- -->
+<li>可雙向傳輸資料（從 AWS 傳出或傳入）</li>
+<li>適用於資料中心搬遷、大量影片素材搬移、離線資料備份等情境</li>
+<li>影片資源：<!-- -->
 <ul>
-<li>用網路上傳和用 Snow Family 哪個比較快? 比較穩? 成本考量?</li>
+<li><a href="https://youtu.be/9uc2DSZ1wL8?feature=shared" target="_blank" rel="noopener noreferrer">大規模資料遷移案例影片</a></li>
 </ul>
 </li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="總結">總結<a href="#總結" class="hash-link" aria-label="Direct link to 總結" title="Direct link to 總結">​</a></h3>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-snowmobile已終止服務">🚛 Snowmobile（已終止服務）<a href="#-snowmobile已終止服務" class="hash-link" aria-label="Direct link to 🚛 Snowmobile（已終止服務）" title="Direct link to 🚛 Snowmobile（已終止服務）">​</a></h2>
+<blockquote>
+<p>📆 終止時間：2024 年 4 月</p>
+</blockquote>
 <ul>
-<li>2024 年 AWS 取消多項 Snow Family 服務，現在 Snow Family 只剩 Snowball (<strong>Snowball Edge</strong>)<!-- -->
+<li>提供 <strong>高達 100 PB</strong> 的容量</li>
+<li>本質是一台裝載多個 Snowball 的大型卡車</li>
+<li>搭載：<!-- -->
 <ul>
-<li>取消原因除了成本效益，現在和 2015 年剛推出 Snowball、2016 推出 Snowmobile 以及 2020 推出 Snowcone 的時空背景不 同了，網路速度大幅提升</li>
+<li><strong>溫控系統、GPS 定位、24 小時監控攝影機</strong></li>
+<li>可選配 <strong>保全人員護送</strong></li>
 </ul>
 </li>
-<li>有了更快的網路後，搭配 AWS DataSync、Direct Connect、OutPost 比以前更能解決資料傳輸等問題</li>
+<li>適用於超過 10 PB 的極大資料搬移場景</li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="參考資料">參考資料<a href="#參考資料" class="hash-link" aria-label="Direct link to 參考資料" title="Direct link to 參考資料">​</a></h3>
-<p><a href="https://blog.searce.com/meet-the-aws-snow-family-your-coolest-allies-in-the-cloud-18dd041d7b42" target="_blank" rel="noopener noreferrer">https://blog.searce.com/meet-the-aws-snow-family-your-coolest-allies-in-the-cloud-18dd041d7b42</a></p>
-<p><a href="https://www.aboutamazon.com/news/aws/introducing-aws-snowcone-a-small-ultra-portable-edge-computing-and-data-transfer-device" target="_blank" rel="noopener noreferrer">https://www.aboutamazon.com/news/aws/introducing-aws-snowcone-a-small-ultra-portable-edge-computing-and-data-transfer-device</a></p>
-<p><a href="https://youtu.be/SFmT6hf4m4g?feature=shared" target="_blank" rel="noopener noreferrer">https://youtu.be/SFmT6hf4m4g</a></p>
-<p><a href="https://youtu.be/X_8LM7E_hiE?feature=shared" target="_blank" rel="noopener noreferrer">https://youtu.be/X_8LM7E_hiE</a></p>
-<p><a href="https://aws.amazon.com/tw/blogs/storage/aws-snow-device-updates/" target="_blank" rel="noopener noreferrer">https://aws.amazon.com/tw/blogs/storage/aws-snow-device-updates/</a></p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/notes/intro"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Notes Intro</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#snowcone-2024-11-12-aws-宣布終止-snowcone-服務" class="table-of-contents__link toc-highlight">Snowcone (2024-11-12 AWS 宣布終止 Snowcone 服務)</a><ul><li><a href="#snowball" class="table-of-contents__link toc-highlight">Snowball</a></li><li><a href="#snowmobile-2024-年-4-月起已停止提供服務" class="table-of-contents__link toc-highlight">Snowmobile (2024 年 4 月起已停止提供服務)</a></li><li><a href="#使用原則" class="table-of-contents__link toc-highlight">使用原則</a></li><li><a href="#總結" class="table-of-contents__link toc-highlight">總結</a></li><li><a href="#參考資料" class="table-of-contents__link toc-highlight">參考資料</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Tutorial</a></li><li class="footer__item"><a class="footer__link-item" href="/notes/intro">Notes</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/rara7777" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/in/hungrara" target="_blank" rel="noopener noreferrer" class="footer__link-item">Linkedin<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Ray Hung 學習筆記. Built with Docusaurus.</div></div></div></footer></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="停止服務原因">停止服務原因：<a href="#停止服務原因" class="hash-link" aria-label="Direct link to 停止服務原因：" title="Direct link to 停止服務原因：">​</a></h3>
+<ul>
+<li>高昂的人力與硬體維運成本（如駕駛、停車、電力與冷卻）</li>
+<li>使用率偏低，因多數企業只需 Snowball 就能完成遷移任務</li>
+<li>隨著網路傳輸技術進步，多數資料搬移不再需要如此大型的實體設備</li>
+<li>影片資源：<!-- -->
+<ul>
+<li><a href="https://youtu.be/8vQmTZTq7nw?feature=shared" target="_blank" rel="noopener noreferrer">Snowmobile 展示影片</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-使用時的評估原則">🧠 使用時的評估原則<a href="#-使用時的評估原則" class="hash-link" aria-label="Direct link to 🧠 使用時的評估原則" title="Direct link to 🧠 使用時的評估原則">​</a></h2>
+<p>在選擇 Snow Family 之前，請評估以下幾點：</p>
+<ol>
+<li><strong>資料總量</strong>：您的資料量有多大？</li>
+<li><strong>現有網路頻寬與穩定性</strong>：透過現有網路上傳資料至 S3 需要多少時間？</li>
+<li><strong>時間成本 vs 裝置寄送成本</strong>：哪種方式更快、更穩定、總成本更低？</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-現況與總結截至-2025-年">📉 現況與總結（截至 2025 年）<a href="#-現況與總結截至-2025-年" class="hash-link" aria-label="Direct link to 📉 現況與總結（截至 2025 年）" title="Direct link to 📉 現況與總結（截至 2025 年）">​</a></h2>
+<ul>
+<li>2024 年 AWS 宣布終止 <strong>Snowcone</strong> 與 <strong>Snowmobile</strong>，目前僅剩 <strong>Snowball Edge</strong> 系列仍在提供服務</li>
+<li>停止原因與時代背景有關：<!-- -->
+<ul>
+<li>現今企業環境中，<strong>網路頻寬大幅提升</strong></li>
+<li>搭配 AWS 的其他工具（如 <strong>DataSync</strong>、<strong>Direct Connect</strong>、<strong>Outposts</strong>），資料傳輸變得更簡單與高效</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-延伸閱讀與參考資源">📚 延伸閱讀與參考資源<a href="#-延伸閱讀與參考資源" class="hash-link" aria-label="Direct link to 📚 延伸閱讀與參考資源" title="Direct link to 📚 延伸閱讀與參考資源">​</a></h2>
+<ul>
+<li><a href="https://aws.amazon.com/tw/blogs/storage/aws-snow-device-updates/" target="_blank" rel="noopener noreferrer">AWS 官方部落格：Snow Family 裝置更新</a></li>
+<li><a href="https://www.aboutamazon.com/news/aws/introducing-aws-snowcone-a-small-ultra-portable-edge-computing-and-data-transfer-device" target="_blank" rel="noopener noreferrer">Snowcone 官方介紹</a></li>
+<li><a href="https://blog.searce.com/meet-the-aws-snow-family-your-coolest-allies-in-the-cloud-18dd041d7b42" target="_blank" rel="noopener noreferrer">Searce Blog：Meet the AWS Snow Family</a></li>
+<li><a href="https://youtu.be/X_8LM7E_hiE" target="_blank" rel="noopener noreferrer">Snowcone 案例影片</a></li>
+<li><a href="https://youtu.be/SFmT6hf4m4g" target="_blank" rel="noopener noreferrer">Snow Family 整體介紹影片</a></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-04-19T10:43:53.000Z" itemprop="dateModified">Apr 19, 2025</time></b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/notes/AWS Storage/S3 Quickstart"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">AWS S3 快速入門</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#️-snowcone已終止服務" class="table-of-contents__link toc-highlight">❄️ Snowcone（已終止服務）</a></li><li><a href="#-snowball現為唯一仍提供的-snow-family-成員" class="table-of-contents__link toc-highlight">📦 Snowball（現為唯一仍提供的 Snow Family 成員）</a><ul><li><a href="#功能特色" class="table-of-contents__link toc-highlight">功能特色：</a></li></ul></li><li><a href="#-snowmobile已終止服務" class="table-of-contents__link toc-highlight">🚛 Snowmobile（已終止服務）</a><ul><li><a href="#停止服務原因" class="table-of-contents__link toc-highlight">停止服務原因：</a></li></ul></li><li><a href="#-使用時的評估原則" class="table-of-contents__link toc-highlight">🧠 使用時的評估原則</a></li><li><a href="#-現況與總結截至-2025-年" class="table-of-contents__link toc-highlight">📉 現況與總結（截至 2025 年）</a></li><li><a href="#-延伸閱讀與參考資源" class="table-of-contents__link toc-highlight">📚 延伸閱讀與參考資源</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Tutorial</a></li><li class="footer__item"><a class="footer__link-item" href="/notes/intro">Notes</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/rara7777" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/in/hungrara" target="_blank" rel="noopener noreferrer" class="footer__link-item">Linkedin<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Ray Hung 學習筆記. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>

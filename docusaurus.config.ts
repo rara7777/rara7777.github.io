@@ -93,7 +93,7 @@ const config: Config = {
           position: 'left',
           label: 'Notes',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        // {to: '/blog', label: 'Blog', position: 'left'},
       ],
     },
     footer: {
@@ -115,10 +115,6 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/rara7777',
